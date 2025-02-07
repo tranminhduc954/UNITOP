@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+/* Định nghĩa cho thẻ #wrapper */
+#wrapper {
+    width: 960px;
+    height: auto;
+    margin: 0 auto;
+    /* Căn giữa ngang */
+}
+
+/* Định nghĩa chung cho các thẻ div bên trong */
+#header,
+#content,
+#footer {
+    text-align: center;
+    height: 200px;
+    /* Căn giữa văn bản */
+    padding: 10px;
+    /* Khoảng cách trong */
+    border: 1px solid #ddd;
+    /* Đường viền nhạt */
+    /* margin-bottom: 10px; */
+    /* Khoảng cách giữa các phần */
+}
+
+#header {
+    background-color: #f4f4f4;
+}
+
+#content {
+    background-color: #e8e8e8;
+}
+
+#footer {
+    background-color: #dcdcdc;
+}

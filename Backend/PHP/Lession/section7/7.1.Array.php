@@ -1,0 +1,4 @@
+<?php
+// Mảng nâng cao
+
+?>
