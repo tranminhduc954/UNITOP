@@ -13,7 +13,7 @@
     <div id="wrapper">
         <div id="header">
             <a id="logo" href="">UNITOP</a>
-            <p>Xin chào <strong><?php echo $_SESSION['user'];?></strong>
+            <p>Xin chào <strong><?php echo $_SESSION['user_login'];?></strong>
             (<a href="./pages/logout.php">Đăng xuất</a>)</p>
         </div>
         <ul class="main-menu">

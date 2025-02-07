@@ -1,10 +1,6 @@
 <?php
-// $path = "./data/user.php";
-// require_once $path;
 require_once __DIR__ . '/../data/user.php';
 require_once __DIR__ . '/../template/temp.php';
-
-
 if (isset($_POST['btn-login'])) {
     $error = [];
     // Kiểm tra username
@@ -29,19 +25,20 @@ if (isset($_POST['btn-login'])) {
     if (empty($error)) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        // header("Location: ?page=home");
-        // foreach ($list_user as $item) {
-        //     if ($item['username'] == $username && $item['password'] == md5($password)) {
-        //         $_SESSION['user'] = $item;
-        //         $_SESSION['is_login'] = true;
-        //         header("Location: ?page=home");
-        //     } else {
-        //         $error['login'] = "Username hoặc password không đúng";
-        //     }
-        // }
         if (check_login($username, $password)) {
-            $_SESSION['user'] = $username;
-            $_SESSION['is_login'] = true;// Set trạng thái đăng nhập = true
+            // Lưu thông tin người dùng vào session
+            $_SESSION['user_login'] = $username;
+            $_SESSION['is_login'] = true;
+
+            // Nếu người dùng chọn ghi nhớ đăng nhập thì tạo cookie
+            if (isset($_POST['remember'])) {
+                setcookie('is_login', true, time() + 3600, '/');
+                setcookie('user_login', $username, time() + 3600, '/');
+                setcookie('password', $password, time() + 3600, '/');
+
+            }
+
+            // Chuyển hướng về trang chủ
             header("Location: ?page=home");
         } else {
             $error['login'] = "Username hoặc password không đúng";
@@ -70,6 +67,8 @@ if (isset($_POST['btn-login'])) {
         <form id="form-login" action="" method="POST">
             <input type="text" id="username" name="username" value="" placeholder="Tên đăng nhập">
             <input type="password" id="password" name="password" value="" placeholder="Mật khẩu">
+            <label for="remember">Ghi nhớ đăng nhập</label>
+            <input type="checkbox" id="remember" name="remember">
             <input type="submit" name="btn-login" value="Đăng nhập">
         </form>
         <a id="forgot-password" href="">Quên mật khẩu?</a>

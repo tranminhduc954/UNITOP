@@ -7,6 +7,7 @@ getHeader()
     Home
     <?php
     show_array($_SESSION);
+    show_array($_COOKIE);
     ?>
 </div>
 <?php

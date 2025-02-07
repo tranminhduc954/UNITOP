@@ -51,4 +51,10 @@ function is_login() {
     return false;
 }
 
+function redirect_to($file)
+{
+    header("Location: $file");
+    exit();
+}
+
 ?>
