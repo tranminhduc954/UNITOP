@@ -41,7 +41,7 @@ if (isset($_POST['btn-login'])) {
         // }
         if (check_login($username, $password)) {
             $_SESSION['user'] = $username;
-            $_SESSION['is_login'] = true;
+            $_SESSION['is_login'] = true;// Set trạng thái đăng nhập = true
             header("Location: ?page=home");
         } else {
             $error['login'] = "Username hoặc password không đúng";
