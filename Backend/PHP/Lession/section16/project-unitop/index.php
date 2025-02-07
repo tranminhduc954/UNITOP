@@ -16,6 +16,7 @@ if (isset($_GET['page'])) {
 
 // Kiểm tra tình trạng login
 if (!is_login() && $page != 'login') {
+    // Nếu chưa login mà vào các page khác ngoài trang đăng nhập thì chuyển người dùng về trang login
     header("Location: ?page=login");
 }
 
