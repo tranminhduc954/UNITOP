@@ -14,6 +14,11 @@ if (isset($_GET['page'])) {
     $page = 'login';
 }
 
+// Kiểm tra tình trạng login
+if (!is_login() && $page != 'login') {
+    header("Location: ?page=login");
+}
+
 $path = __DIR__ . "/./pages/$page.php"; // Set đường dẫn tuyệt đối cho thư mục pages
 if (file_exists($path)) {
     require_once($path); // reqire page lên xử lý ở index

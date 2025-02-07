@@ -44,4 +44,11 @@ function check_login($username, $password) {
     return false;
 }
 
+function is_login() {
+    if (isset($_SESSION['is_login'])) {
+        return true;
+    }
+    return false;
+}
+
 ?>
