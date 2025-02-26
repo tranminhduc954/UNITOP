@@ -7,6 +7,7 @@ require 'data/products.php';
 require 'lib/data.php';
 require 'lib/template.php';
 require 'lib/pages.php';
+require 'lib/product.php';
 
 $mod = !empty($_GET['mod']) ? $_GET['mod'] : 'home';
 $act = !empty($_GET['act']) ? $_GET['act'] : 'main';

@@ -55,7 +55,7 @@ $list_product = array(
         'price' => 30000000,
         'code' => 'SP003',
         'product_desc' => 'Sản phẩm do apple sản xuất',
-        'product_thumb' => 'https://cdn.tgdd.vn/Products/Images/44/220522/macbook-pro-2020-m1-silver-600x600-600x600.jpg',
+        'product_thumb' => 'https://th.bing.com/th/id/OIP.-_IWcGdxb9Iz17_GtcNQawHaEK?rs=1&pid=ImgDetMain',
         'product_content' => 'Sản phẩm do apple sản xuất <img src="https://th.bing.com/th/id/OIP.-_IWcGdxb9Iz17_GtcNQawHaEK?rs=1&pid=ImgDetMain" alt=""/>',
         'cat_id' => 2
     ),
@@ -65,7 +65,7 @@ $list_product = array(
         'price' => 25000000,
         'code' => 'SP004',
         'product_desc' => 'Sản phẩm do apple sản xuất',
-        'product_thumb' => 'https://cdn.tgdd.vn/Products/Images/44/220522/macbook-pro-2020-m1-silver-600x600-600x600.jpg',
+        'product_thumb' => 'https://product.hstatic.net/1000167396/product/mac_pro_2020_555795ea1cd14c7f82c4a5b8aa8a3dd5_master.jpg',
         'product_content' => 'Sản phẩm do apple sản xuất <img src="https://product.hstatic.net/1000167396/product/mac_pro_2020_555795ea1cd14c7f82c4a5b8aa8a3dd5_master.jpg" alt=""/>',
         'cat_id' => 2
     ),
@@ -75,7 +75,7 @@ $list_product = array(
         'price' => 35000000,
         'code' => 'SP005',
         'product_desc' => 'Sản phẩm do apple sản xuất',
-        'product_thumb' => 'https://cdn.tgdd.vn/Products/Images/44/220522/macbook-pro-2020-m1-silver-600x600-600x600.jpg',
+        'product_thumb' => 'https://www.xtmobile.vn/vnt_upload/product/10_2021/thumbs/(600x600)_crop_macbook-pro-m1-pro-2021-16-inch-16gb-512gb.jpg',
         'product_content' => 'Sản phẩm do apple sản xuất <img src="https://www.xtmobile.vn/vnt_upload/product/10_2021/thumbs/(600x600)_crop_macbook-pro-m1-pro-2021-16-inch-16gb-512gb.jpg" alt=""/>',
         'cat_id' => 2
     ),
@@ -85,7 +85,7 @@ $list_product = array(
         'price' => 30000000,
         'code' => 'SP006',
         'product_desc' => 'Sản phẩm do apple sản xuất',
-        'product_thumb' => 'https://cdn.tgdd.vn/Products/Images/44/220522/macbook-pro-2020-m1-silver-600x600-600x600.jpg',
+        'product_thumb' => 'https://th.bing.com/th/id/OIP.IvO3PdLNTMA8UDYlMv_GAAHaHa?rs=1&pid=ImgDetMain',
         'product_content' => 'Sản phẩm do apple sản xuất <img src="https://th.bing.com/th/id/OIP.IvO3PdLNTMA8UDYlMv_GAAHaHa?rs=1&pid=ImgDetMain" alt=""/>',
         'cat_id' => 2
     )

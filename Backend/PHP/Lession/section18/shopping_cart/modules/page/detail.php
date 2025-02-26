@@ -6,6 +6,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 // gọi hàm lấy dữ liệu từ id
 $item = get_page_by_id($id);
 // show_array($item);
+
 ?>
 <div id="main-content-wp" class="detail-news-page">
     <div class="wp-inner clearfix">
