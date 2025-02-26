@@ -19,7 +19,7 @@ $list_product_cat = get_product_cat($id);
             <div class="section list-cat">
                 <div class="section-head">
                     <h3 class="section-title"><?php echo $list_product_cat['cat_title'];?></h3>
-                    <p class="section-desc">Có 20 sản phẩm trong mục này</p>
+                    <p class="section-desc">Có <strong><?php echo count($list_product);?></strong> sản phẩm trong mục này</p>
                 </div>
                 <div class="section-detail">
                     <ul class="list-item clearfix">
@@ -28,8 +28,8 @@ $list_product_cat = get_product_cat($id);
                             <a href="?mod=product&act=detail&id=<?php echo $product['id'];?>" title="" class="thumb">
                                 <img src="<?php echo $product['product_thumb'];?>" alt="">
                             </a>
-                            <a href="?page=detail_product" title="" class="title"><?php echo $product['product_title'];?></a>
-                            <p class="price"><?php echo $product['price'];?></p>
+                            <a href="?mod=product&act=detail&id=<?php echo $product['id'];?>" title="" class="title"><?php echo $product['product_title'];?></a>
+                            <p class="price"><?php echo fomatPrice($product['price']);?></p>
                         </li>
                         <?php } ?>
                         <!-- <li>
