@@ -30,7 +30,7 @@ $product = get_product_by_id($id);
                         <div class="num-order-wp">
                             <span>Số lượng:</span>
                             <input type="text" id="num-order" name="num-order" value="1">
-                            <a href="?mod=cart&act=add&id=1" title="" class="add-to-cart">Thêm giỏ hàng</a>
+                            <a href="?mod=cart&act=add&id=<?php echo $product['id'];?>" title="" class="add-to-cart">Thêm giỏ hàng</a>
                         </div>
 
                     </div>
