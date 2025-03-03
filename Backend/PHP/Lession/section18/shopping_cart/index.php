@@ -1,4 +1,6 @@
 <?php
+session_start();
+ob_start();
 // Dữ liệu
 require 'data/pages.php';
 require 'data/products.php';
@@ -9,6 +11,7 @@ require 'lib/template.php';
 require 'lib/pages.php';
 require 'lib/product.php';
 require 'lib/number.php';
+require 'lib/cart.php';
 
 $mod = !empty($_GET['mod']) ? $_GET['mod'] : 'home';
 $act = !empty($_GET['act']) ? $_GET['act'] : 'main';

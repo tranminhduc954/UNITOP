@@ -1,5 +1,6 @@
 <?php
 get_header();
+// show_array($_SESSION['cart']);
 ?>
 <div id="main-content-wp" class="cart-page">
     <div class="section" id="breadcrumb-wp">
@@ -24,26 +25,28 @@ get_header();
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($_SESSION['cart']['buy'] as $item) {;?>
                         <tr>
-                            <td>HCA00031</td>
+                            <td><?php echo $item['code'];?></td>
                             <td>
                                 <a href="" title="" class="thumb">
-                                    <img src="public/images/img-product.png" alt="">
+                                    <img src="<?php echo $item['product_thumb'];?>" alt="">
                                 </a>
                             </td>
                             <td>
-                                <a href="" title="" class="name-product">Đồ chơi trẻ em dưới 1 tuổi</a>
+                                <a href="" title="" class="name-product"><?php echo $item['product_title'];?></a>
                             </td>
-                            <td>5.000.000đ</td>
+                            <td><?php echo fomatPrice($item['price']);?></td>
                             <td>
-                                <input type="text" name="num-order" value="1" class="num-order">
+                                <input type="text" name="num-order" value="<?php echo $item['qty'];?>" class="num-order">
                             </td>
-                            <td>5.000.000đ</td>
+                            <td><?php echo fomatPrice($item['sub_total']);?></td>
                             <td>
                                 <a href="" title="" class="del-product"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
-                        <tr>
+                        <?php };?>
+                        <!-- <tr>
                             <td>HCA00032</td>
                             <td>
                                 <a href="" title="" class="thumb">
@@ -80,13 +83,12 @@ get_header();
                             <td>
                                 <a href="" title="" class="del-product"><i class="fa fa-trash-o"></i></a>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                     <tfoot>
-                        <tr>
                             <td colspan="7">
                                 <div class="clearfix">
-                                    <p id="total-price" class="fl-right">Tổng giá: <span>12.000.000đ</span></p>
+                                    <p id="total-price" class="fl-right">Tổng giá: <span><?php echo fomatPrice($_SESSION['cart']['info']['total']);?></span></p>
                                 </div>
                             </td>
                         </tr>
