@@ -7,6 +7,7 @@ require 'data/products.php';
 require 'lib/data.php';
 require 'lib/template.php';
 
+// Xử lý chuyển luồng các module để chạy trên file index
 $mod = !empty($_GET['mod']) ? $_GET['mod'] : 'home';
 $act = !empty($_GET['act']) ? $_GET['act'] : 'main';
 $path = "modules/{$mod}/{$act}.php";
