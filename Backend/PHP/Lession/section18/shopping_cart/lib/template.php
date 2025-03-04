@@ -7,5 +7,8 @@ function get_footer() {
     require __DIR__ . "/../inc/footer.php";
 }
 
+function get_sidebar() {
+    require __DIR__ . "/../inc/sidebar.php";
+}
 
 ?>
