@@ -42,7 +42,7 @@ get_header();
                             </td>
                             <td><?php echo fomatPrice($item['sub_total']);?></td>
                             <td>
-                                <a href="" title="" class="del-product"><i class="fa fa-trash-o"></i></a>
+                                <a href="?mod=cart&act=delete&id=<?php echo $item['id'];?>" title="" class="del-product"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                         <?php };?>
@@ -110,7 +110,7 @@ get_header();
             <div class="section-detail">
                 <p class="title">Click vào <span>“Cập nhật giỏ hàng”</span> để cập nhật số lượng. Nhập vào số lượng <span>0</span> để xóa sản phẩm khỏi giỏ hàng. Nhấn vào thanh toán để hoàn tất mua hàng.</p>
                 <a href="?page=home" title="" id="buy-more">Mua tiếp</a><br/>
-                <a href="" title="" id="delete-cart">Xóa giỏ hàng</a>
+                <a href="?mod=cart&act=delete_all" title="" id="delete-cart">Xóa giỏ hàng</a>
             </div>
         </div>
     </div>
