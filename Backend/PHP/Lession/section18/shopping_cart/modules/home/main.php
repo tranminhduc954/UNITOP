@@ -37,7 +37,7 @@ $list_product_phone = get_list_product_by_id(1);
                     <h3 class="section-title"><?php echo $list_product_cat[1]['cat_title'];?></h3>
                 </div>
                 <div class="section-detail">
-                    <ul class="list-item clearfix">mm
+                    <ul class="list-item clearfix">
                         <?php foreach($list_product_phone as $item) {?>
                         <li>
                             <a href="?mod=product&act=detail&id=<?php echo $item['id'];?>" title="" class="thumb">

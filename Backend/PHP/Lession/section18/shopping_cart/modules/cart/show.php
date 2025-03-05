@@ -1,6 +1,7 @@
 <?php
 get_header();
 // show_array($_SESSION['cart']);
+$list_buy = get_list_buy_cart();
 ?>
 <div id="main-content-wp" class="cart-page">
     <div class="section" id="breadcrumb-wp">
@@ -11,7 +12,10 @@ get_header();
         </div>
     </div>
     <div id="wrapper" class="wp-inner clearfix">
-        <div class="section" id="info-cart-wp">
+        <?php 
+        if (!empty($list_buy)) {
+        ?>
+            <div class="section" id="info-cart-wp">
             <div class="section-detail table-responsive">
                 <table class="table">
                     <thead>
@@ -34,7 +38,7 @@ get_header();
                                 </a>
                             </td>
                             <td>
-                                <a href="" title="" class="name-product"><?php echo $item['product_title'];?></a>
+                                <a href="?mod=product&act=detail&id=<?php echo $item['id'];?>" title="<?php echo $item['product_title'];?>" class="name-product"><?php echo $item['product_title'];?></a>
                             </td>
                             <td><?php echo fomatPrice($item['price']);?></td>
                             <td>
@@ -42,7 +46,7 @@ get_header();
                             </td>
                             <td><?php echo fomatPrice($item['sub_total']);?></td>
                             <td>
-                                <a href="" title="" class="del-product"><i class="fa fa-trash-o"></i></a>
+                                <a href="?mod=cart&act=delete&id=<?php echo $item['id']?>" title="Xóa sản phẩm" class="del-product"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                         <?php };?>
@@ -88,7 +92,7 @@ get_header();
                     <tfoot>
                             <td colspan="7">
                                 <div class="clearfix">
-                                    <p id="total-price" class="fl-right">Tổng giá: <span><?php echo fomatPrice($_SESSION['cart']['info']['total']);?></span></p>
+                                    <p id="total-price" class="fl-right">Tổng giá: <span><?php echo fomatPrice(get_total_cart());?></span></p>
                                 </div>
                             </td>
                         </tr>
@@ -110,9 +114,16 @@ get_header();
             <div class="section-detail">
                 <p class="title">Click vào <span>“Cập nhật giỏ hàng”</span> để cập nhật số lượng. Nhập vào số lượng <span>0</span> để xóa sản phẩm khỏi giỏ hàng. Nhấn vào thanh toán để hoàn tất mua hàng.</p>
                 <a href="?page=home" title="" id="buy-more">Mua tiếp</a><br/>
-                <a href="" title="" id="delete-cart">Xóa giỏ hàng</a>
+                <a href="?mod=cart&act=delete_all" title="" id="delete-cart">Xóa giỏ hàng</a>
             </div>
         </div>
+        <?php
+        } else {
+            ?>
+            <p>Không có sản phẩm nào trong giỏ hàng</p>
+        <?php    
+        }
+        ?>
     </div>
 </div>
 <?php

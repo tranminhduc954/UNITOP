@@ -7,7 +7,6 @@ add_cart($id);
 
 // show_array($_SESSION['cart']);
 
-// Chuyển hướng sang giỏ hàng
-redirect('?mod=cart&act=show');
-
+// Giữ nguyên trang hiện tại khi thêm sản phẩm vào giỏ hàng
+header("Location: ?mod=product&act=detail&id=$id");
 ?>

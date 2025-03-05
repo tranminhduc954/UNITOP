@@ -39,5 +39,27 @@ function update_info_cart() {
     }
 }
 
+// Lấy danh sách sản phẩm trong giỏ hàng
+function get_list_buy_cart() {
+    if (isset($_SESSION['cart'])) {
+        return $_SESSION['cart']['buy'];
+    }
+    return false;
+}
 
+// Láy số lượng trong giỏ hàng
+function get_num_order_cart() {
+    if (isset($_SESSION['cart'])) {
+        return $_SESSION['cart']['info']['num_order'];
+    }
+    return false;
+}
+
+// Lấy tổng giá trị đơn hàng
+function get_total_cart() {
+    if (isset($_SESSION['cart'])) {
+        return $_SESSION['cart']['info']['total'];
+    }
+    return false;
+}
 ?>
