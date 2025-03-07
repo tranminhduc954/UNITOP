@@ -47,6 +47,14 @@ function get_list_buy_cart() {
     return false;
 }
 
+// Lấy mảng giỏ hàng (buy + info)
+function get_cart() {
+    if (isset($_SESSION['cart'])) {
+        return $_SESSION['cart'];
+    }
+    return false;
+}
+
 // Láy số lượng trong giỏ hàng
 function get_num_order_cart() {
     if (isset($_SESSION['cart'])) {

@@ -64,7 +64,7 @@ $list_buy = get_list_buy_cart();
                                     <div class="clearfix">
                                         <div class="fl-right">
                                             <input type="submit" name="btn_update_cart" id="update-cart" value="Cập nhật giỏ hàng">
-                                            <a href="?page=checkout" title="" id="checkout-cart">Thanh toán</a>
+                                            <a href="?mod=cart&act=checkout" title="" id="checkout-cart">Thanh toán</a>
                                         </div>
                                     </div>
                                 </td>
