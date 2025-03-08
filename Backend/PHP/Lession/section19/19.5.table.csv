@@ -1,0 +1,6 @@
+POST							CATEGORY	
+id	post_title	post_detail	post_cat_id				id	category_title
+1	Tin t?c ngày	lorem(500)	1				1	Th?i s?
+2	Th?i trang s?	lorem(700)	2				2	Tin m?i
+3	Máy tính thay th?	lorem(1000)	2				3	Khoa h?c
+4	V?n may cá nhân	lorem(1000)	1				4	Làm ??p
