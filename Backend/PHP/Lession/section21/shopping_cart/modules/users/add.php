@@ -1,5 +1,6 @@
 <?php
 get_header();
+get_sidebar();
 // Kết nối luôn database ở index
 
 if (isset($_POST['btn_reg'])) {
@@ -57,6 +58,7 @@ if (isset($_POST['btn_reg'])) {
             . "VALUES ('{$fullname}', '{$username}', '{$password}', '{$email}', '{$gender}')";
         if (mysqli_query($conn, $sql)) {
             $alert['success'] = "Thêm dữ liệu thành công";
+            header("Location: ?mod=users&act=main");
         } else {
             echo "Lỗi".mysqli_error($conn);
         }
@@ -69,7 +71,8 @@ if (isset($_POST['btn_reg'])) {
 <div id="content">
     <style>
         #form_reg {
-            width: 250px;
+            width: 500px;
+            padding-left: 200px;
         }
 
         label {
@@ -107,7 +110,7 @@ if (isset($_POST['btn_reg'])) {
             width: 100%;
         }
     </style>
-    <h1>Thêm mới</h1>
+    <!-- <h1>Thêm mới</h1> -->
     <?php
         if (!empty($alert['success'])) {
         ?>
