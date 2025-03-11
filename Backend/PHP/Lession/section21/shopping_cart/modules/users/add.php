@@ -4,11 +4,12 @@ get_header();
 
 if (isset($_POST['btn_reg'])) {
     $error = [];
+    $alert = [];
     // Kiểm tra fullname
     if (empty($_POST['fullname'])) {
         $error['fullname'] = "Không được để trống fullname";
     } else {
-        $fullname = $_POST['fullname'];
+        $fullname = trim(htmlspecialchars($_POST['fullname']));
     }
     // Kiểm tra giới tính
     if (empty($_POST['gender'])) {
@@ -20,40 +21,47 @@ if (isset($_POST['btn_reg'])) {
     if (empty($_POST['username'])) {
         $error['username'] = "Không được để trống username";
     } else {
-        $pattern = "^[A-Za-z0-9_\.]{6,32}$/";
+        $pattern = "/^(?![._-])[a-zA-Z0-9._-]{6,32}$/"; // Sửa regex
         if (!preg_match($pattern, $_POST['username'])) {
             $error['username'] = "Tên đăng nhập không đúng định dạng";
         } else {
-            $username = $_POST['username'];
+            $username = trim(htmlspecialchars($_POST['username']));
         }
     }
     // Kiểm tra password
     if (empty($_POST['password'])) {
         $error['password'] = "Không được để trống password";
     } else {
-        $pattern = "^[A-Za-z0-9_\.!@#$%^&*()]{6,32}$/";
+        $pattern = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,32}$/";
         if (!preg_match($pattern, $_POST['password'])) {
-            $error['password'] = "Tên đăng nhập không đúng định dạng";
+            $error['password'] = "Mật khẩu không đúng định dạng";
         } else {
-            $username = $_POST['password'];
+            // $password = $_POST['password'];
+            $password = md5($_POST['password']); // Mã hóa mật khẩu trước khi lưu
         }
     }
     // Kiểm tra email
     if (empty($_POST['email'])) {
         $error['email'] = "Không được để trống email";
     } else {
-        $pattern = "/^[A-Za-z0-9_.]{6,32}@([a-Za-z0-9]{2,12}(.[a-zA-Z]{2,12})+$/)";
+        $pattern = "/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/";
         if (!preg_match($pattern, $_POST['email'])) {
             $error['email'] = "Email không đúng định dạng";
         } else {
-            $email = $_POST['email'];
+            $email = trim(htmlspecialchars($_POST['email']));
         }
     }
     // Kết luận
     if (empty($error)) {
-        echo "Dữ liệu hợp lệ";
+        $sql = "INSERT INTO `tbl_users` (`fullname`, `username`, `password`, `email`, `gender`)"
+            . "VALUES ('{$fullname}', '{$username}', '{$password}', '{$email}', '{$gender}')";
+        if (mysqli_query($conn, $sql)) {
+            $alert['success'] = "Thêm dữ liệu thành công";
+        } else {
+            echo "Lỗi".mysqli_error($conn);
+        }
     } else {
-        show_array($error);
+        // show_array($error);
     }
 }
 ?>
@@ -100,6 +108,13 @@ if (isset($_POST['btn_reg'])) {
         }
     </style>
     <h1>Thêm mới</h1>
+    <?php
+        if (!empty($alert['success'])) {
+        ?>
+            <p class="success"><?php echo $alert['success']; ?></p>
+        <?php
+        }
+        ?>
     <form action="" method="POST" id="form_reg">
         <label for="fullname">Họ và Tên</label>
         <input type="text" name="fullname" id="fullname">
@@ -120,7 +135,7 @@ if (isset($_POST['btn_reg'])) {
         }
         ?>
         <label for="password">Mật khẩu</label>
-        <input type="text" name="password" id="password">
+        <input type="password" name="password" id="password">
         <?php
         if (!empty($error['password'])) {
         ?>
