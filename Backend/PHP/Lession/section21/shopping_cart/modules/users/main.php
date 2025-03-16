@@ -5,7 +5,8 @@ get_sidebar();
 $sql = "SELECT * FROM `tbl_users`";
 $result = mysqli_query($conn, $sql);
 $list_user = [];
-if (mysqli_num_rows($result) > 0) {
+$num_rows = mysqli_num_rows($result);
+if ( $num_rows > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $list_user[] = $row;
     }
@@ -15,6 +16,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 <div id="main-content-wp" class="detail-news-page">
     <a class="add_new" href="?mod=users&act=add">Thêm mới</a>
+    <br>
     <style>
         .table_data thead tr td {
             font-weight: bold;
@@ -32,7 +34,7 @@ if (mysqli_num_rows($result) > 0) {
             padding: 8px 12px;
         }
     </style>
-    <h1>Danh sách thành viên</h1>
+    <h1>Danh sách thành viên: (<?php echo "<strong>{$num_rows}</strong>";?> bản ghi)</h1>
     <?php if (!empty($list_user)) {
     ?>
         <table class="table_data">
@@ -44,12 +46,15 @@ if (mysqli_num_rows($result) > 0) {
                     <td>Username</td>
                     <td>Email</td>
                     <td>Gender</td>
+                    <td>Note</td>
                 </tr>
             </thead>
             <?php
             $temp = 0;
             foreach ($list_user as $item) {
                 $temp++;
+                $item['url_update'] = "?mod=users&act=update&id={$item['user_id']}";
+                $item['url_delete'] = "?mod=users&act=delete&id={$item['user_id']}";
                 ?>
                 <tbody>
                 <tr>
@@ -59,6 +64,7 @@ if (mysqli_num_rows($result) > 0) {
                     <td><?php echo $item['username']?></td>
                     <td><?php echo $item['email']?></td>
                     <td><?php echo $item['gender']?></td>
+                    <td><a href="<?php echo $item['url_update']?>">Sửa</a> | <a href="<?php echo $item['url_delete']?>">Xóa</a></td>
                 </tr>
             </tbody>
             <?php }?>
