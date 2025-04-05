@@ -30,7 +30,7 @@ if (isset($_POST['btn_reg'])) {
 
     // Nếu không có lỗi thì thực hiện cập nhật dữ liệu
     if (empty($error)) {
-        $sql = "UPDATE `tbl_users` SET `fullname` = '{$fullname}', `gender` = '{$gender}' WHERE `user_id` = {$id}";
+        $sql = "UPDATE `tbl_user` SET `fullname` = '{$fullname}', `gender` = '{$gender}' WHERE `user_id` = {$id}";
 
         if (mysqli_query($conn, $sql)) {
             $alert['success'] = "Update dữ liệu thành công!";
@@ -41,7 +41,7 @@ if (isset($_POST['btn_reg'])) {
 }
 
 // Lấy lại dữ liệu từ cơ sở dữ liệu sau khi cập nhật
-$sql = "SELECT * FROM `tbl_users` WHERE `user_id` = {$id}";
+$sql = "SELECT * FROM `tbl_user` WHERE `user_id` = {$id}";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
