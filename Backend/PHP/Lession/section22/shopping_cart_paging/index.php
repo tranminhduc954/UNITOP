@@ -13,6 +13,8 @@ require 'lib/pages.php';
 require 'lib/product.php';
 require 'lib/number.php';
 require 'lib/cart.php';
+require 'lib/users.php';
+require 'lib/pagging.php';
 
 $mod = !empty($_GET['mod']) ? $_GET['mod'] : 'home';
 $act = !empty($_GET['act']) ? $_GET['act'] : 'main';

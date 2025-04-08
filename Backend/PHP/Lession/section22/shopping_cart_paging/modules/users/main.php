@@ -11,11 +11,6 @@ get_header();
         <a class="add_new" href="?mod=users&act=add">Thêm mới</a>
 
         <?php
-        // Kiểm tra kết nối
-        if (!isset($conn)) {
-            die("Lỗi kết nối CSDL");
-        }
-
         // Số lượng bản ghi trên trang
         $num_per_page = 5;
 
@@ -26,23 +21,16 @@ get_header();
         // Điểm kết thúc
         $end = ($page * $num_per_page) - 1;
 
-        // Truy vấn dữ liệu
-        $sql = "SELECT * FROM tbl_user LIMIT {$start}, {$num_per_page}";
-        $result = mysqli_query($conn, $sql);
-        $list_user = [];
-        $num_rows = mysqli_num_rows($result);
+        // Gọi hàm get_users
+        $data = get_user($start, $num_per_page);
+        $list_user = $data['data'];
+        $num_rows = $data['total'];
 
         // Tổng số bản ghi
         $total_rows = $num_rows;
 
         // Tính tổng số trang
         $num_page = ceil($total_rows / $num_per_page);
-
-        if ($num_rows > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $list_user[] = $row;
-            }
-        }
 
         // echo "<br>";
         // echo "Trang hiện tại: <strong>{$page}</strong>";
@@ -91,15 +79,9 @@ get_header();
                     <?php } ?>
                 </tbody>
             </table>
-
-            <ul class="pagging">
-                <li><a href="#">Trước</a></li>
-                <li><a href="?mod=users&act=main&page=1">1</a></li>
-                <li><a href="?mod=users&act=main&page=2">2</a></li>
-                <li><a href="?mod=users&act=main&page=3">3</a></li>
-                <li><a href="?mod=users&act=main&page=4">4</a></li>
-                <li><a href="#">Sau</a></li>
-            </ul>
+            <?php
+                echo get_pagging($num_page, $page, "?mod=users&act=main");
+            ?>
         <?php } else { ?>
             <p>Không có dữ liệu thành viên.</p>
         <?php } ?>
