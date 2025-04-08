@@ -16,11 +16,27 @@ get_header();
             die("Lỗi kết nối CSDL");
         }
 
+        // Số lượng bản ghi trên trang
+        $num_per_page = 5;
+
+        // Điểm xuất phát
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $start = ($page - 1) * $num_per_page;
+
+        // Điểm kết thúc
+        $end = ($page * $num_per_page) - 1;
+
         // Truy vấn dữ liệu
-        $sql = "SELECT * FROM tbl_user";
+        $sql = "SELECT * FROM tbl_user LIMIT {$start}, {$num_per_page}";
         $result = mysqli_query($conn, $sql);
         $list_user = [];
         $num_rows = mysqli_num_rows($result);
+
+        // Tổng số bản ghi
+        $total_rows = $num_rows;
+
+        // Tính tổng số trang
+        $num_page = ceil($total_rows / $num_per_page);
 
         if ($num_rows > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -28,22 +44,13 @@ get_header();
             }
         }
 
-        // Số lượng bản ghi trên trang
-        $num_per_page = 5;
-        
-        // Tổng số bản ghi
-        $total_rows = $num_rows;
+        // echo "<br>";
+        // echo "Trang hiện tại: <strong>{$page}</strong>";
+        // echo "<br>";
+        // echo "Số thứ tự bắt đầu trang <strong>{$page}</strong> là: <strong>{$start}</strong>";
+        // echo "<br>";
+        // echo "Số thứ tự kết thúc trang <strong>{$page}</strong> là: <strong>{$end}</strong>";
 
-        // Tính tổng số trang
-        $num_page = ceil($total_rows/$num_per_page);
-        
-        // Điểm xuất phát
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $start = ($page -1) * $num_per_page;
-
-        echo "Trang hiện tại {$page}";
-        echo "<br>";
-        echo "trị số bản ghi bắt đầu {$start}";
         ?>
 
         <h1>Danh sách thành viên: (<strong><?php echo $num_rows; ?></strong> bản ghi)</h1>
@@ -63,7 +70,7 @@ get_header();
                 </thead>
                 <tbody>
                     <?php
-                    $temp = 0;
+                    $temp = $start; // Đánh số thứ tự
                     foreach ($list_user as $item) {
                         $temp++;
                         $url_update = "?mod=users&act=update&id={$item['user_id']}";
