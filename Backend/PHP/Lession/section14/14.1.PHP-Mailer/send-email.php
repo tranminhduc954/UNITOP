@@ -51,7 +51,7 @@ function send_email_php($mailTo, $subject, $content) {
     }
 }
 
-$mailTo = 'tranminhduc.hbh@vnpt.vn';
+$mailTo = 'minhductran.meow@gmail.com';
 $subject = 'Test send email';
 $content = 'Hello, I am testing send email by PHP';
 
