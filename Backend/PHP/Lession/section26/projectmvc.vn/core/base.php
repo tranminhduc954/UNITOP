@@ -71,15 +71,27 @@ function load($type, $name) {
  * Gọi đến hàm theo tham số biến
  */
 
+// function call_function($list_function = array()) {
+//     if (is_array($list_function)) {
+//         foreach ($list_function as $f) {
+//             if (function_exists($f())) {
+//                 $f();
+//             }
+//         }
+//     }
+// }
+
+// Chatgpt
 function call_function($list_function = array()) {
     if (is_array($list_function)) {
         foreach ($list_function as $f) {
-            if (function_exists($f())) {
-                $f();
+            if (function_exists($f)) { // <-- KHÔNG GỌI ở đây
+                $f(); // <-- Gọi ở đây mới đúng
             }
         }
     }
 }
+
 
 function load_view($name, $data_send = array()) {
     global $data;
