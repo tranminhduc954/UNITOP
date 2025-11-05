@@ -22,6 +22,6 @@ if (file_exists($path)) {
 } else {
     require 'inc/404.php';
 }
-
+//end buffer and flush
 
 ?>
